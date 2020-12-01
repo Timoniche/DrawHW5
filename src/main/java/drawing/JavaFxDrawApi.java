@@ -9,7 +9,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class JavaFxDrawingApi implements DrawingApi {
+public class JavaFxDrawApi implements DrawingApi {
     private final Stage stage;
     private final int width;
     private final int height;
@@ -17,7 +17,7 @@ public class JavaFxDrawingApi implements DrawingApi {
     private final Canvas canvas;
     private final GraphicsContext gc;
 
-    public JavaFxDrawingApi(Stage stage, int width, int height) {
+    public JavaFxDrawApi(Stage stage, int width, int height) {
         this.stage = stage;
         this.width = width;
         this.height = height;

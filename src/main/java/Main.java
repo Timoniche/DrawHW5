@@ -48,7 +48,12 @@ public class Main {
         System.out.println(ParsedProperties.getGraphType());
         System.out.println(ParsedProperties.getDrawerType());
 
-        DrawingApplication app = new JavaFxApplication();
+        DrawingApplication app;
+        if (ParsedProperties.getDrawerType() == ParsedProperties.DrawerType.FX) {
+            app = new JavaFxApplication();
+        } else {
+            app = new AwtApplication();
+        }
         app.startApplication();
     }
 }

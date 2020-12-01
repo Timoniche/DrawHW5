@@ -1,4 +1,4 @@
-import drawing.JavaFxDrawingApi;
+import drawing.JavaFxDrawApi;
 import graph.Graph;
 import graph.AdjMatrixGraph;
 import graph.ListEdgesGraph;
@@ -9,7 +9,9 @@ public class JavaFxApplication extends Application implements DrawingApplication
 
     @Override
     public void start(Stage primaryStage) {
-        JavaFxDrawingApi api = new JavaFxDrawingApi(primaryStage, 600, 600);
+        JavaFxDrawApi api = new JavaFxDrawApi(primaryStage,
+                ParsedProperties.getWIDTH(),
+                ParsedProperties.getHEIGHT());
         Graph graph;
         if (ParsedProperties.getGraphType() == ParsedProperties.GraphType.ADJ) {
             graph = new AdjMatrixGraph(api, AdjMatrixGraph.generateAdjMatrix());
@@ -21,4 +23,5 @@ public class JavaFxApplication extends Application implements DrawingApplication
 
     public void startApplication() {
         launch(this.getClass());
-    }}
+    }
+}
