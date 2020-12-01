@@ -1,27 +1,21 @@
+import drawing.JavaFxDrawingApi;
 import graph.Graph;
-import graph.MatrixGraph;
+import graph.AdjMatrixGraph;
+import graph.ListEdgesGraph;
 import javafx.application.Application;
 import javafx.stage.Stage;
-
-import java.util.ArrayList;
 
 public class JavaFxApplication extends Application implements DrawingApplication {
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        JavaFxDrawingApi api = new JavaFxDrawingApi(primaryStage, 600, 400);
-
-        int n = 8;
-        ArrayList<ArrayList<Boolean>> adjMatrix = new ArrayList<ArrayList<Boolean>>();
-        for (int i = 0; i < n; i++) {
-            adjMatrix.add(new ArrayList<Boolean>());
+    public void start(Stage primaryStage) {
+        JavaFxDrawingApi api = new JavaFxDrawingApi(primaryStage, 600, 600);
+        Graph graph;
+        if (ParsedProperties.getGraphType() == ParsedProperties.GraphType.ADJ) {
+            graph = new AdjMatrixGraph(api, AdjMatrixGraph.generateAdjMatrix());
+        } else {
+            graph = new ListEdgesGraph(api, ListEdgesGraph.generateListEdges(), 8);
         }
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                adjMatrix.get(i).add(true);
-            }
-        }
-        Graph graph = new MatrixGraph(api, adjMatrix);
         graph.drawGraph();
     }
 

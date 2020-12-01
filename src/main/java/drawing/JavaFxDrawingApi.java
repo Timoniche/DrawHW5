@@ -1,4 +1,5 @@
-import drawing.DrawingApi;
+package drawing;
+
 import geometry.objects.Circle;
 import geometry.objects.Point;
 import javafx.scene.Group;
@@ -9,12 +10,12 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class JavaFxDrawingApi implements DrawingApi {
-    private Stage stage;
-    private int width;
-    private int height;
+    private final Stage stage;
+    private final int width;
+    private final int height;
 
-    private Canvas canvas;
-    private GraphicsContext gc;
+    private final Canvas canvas;
+    private final GraphicsContext gc;
 
     public JavaFxDrawingApi(Stage stage, int width, int height) {
         this.stage = stage;
@@ -22,6 +23,7 @@ public class JavaFxDrawingApi implements DrawingApi {
         this.height = height;
         this.canvas = new Canvas(width, height);
         this.gc = canvas.getGraphicsContext2D();
+        gc.setFill(Color.GREEN);
     }
 
     public int getDrawingAreaWidth() {

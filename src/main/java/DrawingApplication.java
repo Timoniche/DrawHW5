@@ -1,3 +1,3 @@
 public interface DrawingApplication {
-    public void startApplication();
+    void startApplication();
 }
